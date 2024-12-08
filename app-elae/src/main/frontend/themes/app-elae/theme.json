@@ -1,0 +1,9 @@
+{
+  "lumoImports" : [ "typography", "color", "spacing", "badge", "utility" ],
+  "assets" : {
+    "@fontsource/raleway" : {
+      "*.css" : "@fontsource/raleway",
+      "files/*" : "@fontsource/raleway/files"
+    }
+  }
+}

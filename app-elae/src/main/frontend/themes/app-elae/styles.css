@@ -1,0 +1,27 @@
+@import url('./main-layout.css');
+@import url('./views/tela-inicial-view.css');
+@import url('./views/cadastro-paciente-view.css');
+@import url('./views/cadastro-aluno-view.css');
+@import url('./views/lista-paciente-view.css');
+@import url('./views/lista-aluno-view.css');
+@import url('./views/marcar-sessão-view.css');
+@import url('./views/lista-anamnese-view.css');
+@import url('./views/adicionar-tópico-view.css');
+@import url('./views/perfildo-paciente-view.css');
+@import url('./views/perfildo-aluno-view.css');
+@import url('./views/nova-sessão-view.css');
+@import url('@fontsource/raleway/index.css');    html {
+      --lumo-base-color: rgb(246, 212, 186);
+      --lumo-error-color: rgb(59, 34, 40);
+      --lumo-error-color-50pct: rgba(59, 34, 40, 0.5);
+      --lumo-error-color-10pct: rgba(59, 34, 40, 0.1);
+      --lumo-success-color: rgb(61, 12, 18);
+      --lumo-success-color-50pct: rgba(61, 12, 18, 0.5);
+      --lumo-success-color-10pct: rgba(61, 12, 18, 0.1);
+      --lumo-body-text-color: rgb(94, 11, 21);
+      --lumo-primary-text-color: rgb(94, 11, 21);
+      --lumo-error-text-color: rgb(246, 212, 186);
+      --lumo-success-text-color: rgb(94, 11, 21);
+--lumo-font-family: Raleway;
+
+    }
