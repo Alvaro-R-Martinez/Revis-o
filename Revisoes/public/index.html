@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App de Revisão</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Agendar Revisão</h2>
+    <input type="text" id="conteudo" placeholder="Digite o conteúdo a revisar" />
+    <button onclick="agendarRevisao()">Agendar</button>
+
+    <div class="revisao-list" id="revisaoList"></div>
+
+    <h3>Revisões para Hoje</h3>
+    <div class="revisoes-hoje" id="revisoesHoje"></div>
+</div>
+
+<script>
+    // Função para agendar revisão
+    function agendarRevisao() {
+        const conteudo = document.getElementById('conteudo').value;
+        if (conteudo === "") {
+            alert("Digite o conteúdo a revisar.");
+            return;
+        }
+    
+        const agora = new Date();
+        const revisoes = [
+            { periodo: '24 horas', data: new Date(agora.getTime() + 24 * 60 * 60 * 1000) },
+            { periodo: '7 dias', data: new Date(agora.getTime() + 7 * 24 * 60 * 60 * 1000) },
+            { periodo: '1 mês', data: new Date(agora.setMonth(agora.getMonth() + 1)) },
+            { periodo: '6 meses', data: new Date(agora.setMonth(agora.getMonth() + 6)) }
+        ];
+    
+        const novaRevisao = { conteudo, revisoes };
+    
+        fetch('/api/revisoes', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(novaRevisao),
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert(data.message);
+            mostrarRevisoesHoje();
+        })
+        .catch((error) => {
+            console.error('Erro ao salvar revisão:', error);
+        });
+    }
+    
+    // Função para buscar e mostrar as revisões agendadas para hoje
+    function mostrarRevisoesHoje() {
+        fetch('/api/revisoes/hoje')
+        .then(response => response.json())
+        .then(revisoes => {
+            const revisoesHojeList = document.getElementById('revisoesHoje');
+            revisoesHojeList.innerHTML = '';
+            
+            if (revisoes.length === 0) {
+                revisoesHojeList.innerHTML = '<p>Nenhuma revisão agendada para hoje.</p>';
+                return;
+            }
+    
+            revisoes.forEach(item => {
+                item.revisoes.forEach(revisao => {
+                    const dataRevisao = new Date(revisao.data);
+                    const dataRevisaoFormatada = dataRevisao.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    
+                    if (dataRevisaoFormatada === new Date().toLocaleDateString('pt-BR')) {
+                        revisoesHojeList.innerHTML += `<p>Conteúdo: ${item.conteudo} - Revisão: ${revisao.periodo}</p>`;
+                    }
+                });
+            });
+        });
+    }
+    
+    // Carregar as revisões ao abrir a página
+    window.onload = function() {
+        mostrarRevisoesHoje();
+    };
+    </script>
+</body>
+</html>
+

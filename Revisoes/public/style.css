@@ -1,0 +1,114 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #e0e0e0;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container do formulário */
+.form-container {
+  max-width: 400px;
+  padding: 30px;
+  border-radius: 20px;
+  background-color: #e0e0e0;
+  box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+  transition: transform 0.2s ease-in-out;
+}
+
+.form-container:hover {
+  transform: translateY(-5px);
+}
+
+h1, h2 {
+  color: #004d40;
+  text-align: center;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Estilo do campo de input */
+input {
+  width: 100%;
+  padding: 15px;
+  margin: 20px 0;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: #e0e0e0;
+  box-shadow: inset 8px 8px 16px #bebebe, inset -8px -8px 16px #ffffff;
+  color: #004d40;
+  transition: box-shadow 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: inset 8px 8px 16px #bebebe, inset -8px -8px 16px #ffffff, 0 0 5px #00796b;
+}
+
+/* Botão de agendar */
+button {
+  width: 100%;
+  padding: 15px;
+  margin: 20px 0;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #e0e0e0;
+  box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff;
+  color: #004d40;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.2s ease-in-out;
+}
+
+button:hover {
+  box-shadow: 8px 8px 16px #bebebe, -8px -8px 16px #ffffff, 0 0 10px rgba(0, 121, 107, 0.5);
+  transform: scale(1.05);
+}
+
+button:active {
+  box-shadow: inset 8px 8px 16px #bebebe, inset -8px -8px 16px #ffffff;
+  transform: scale(0.98);
+}
+
+/* Seção de revisões */
+.revisoes-hoje {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #004d40;
+  text-align: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .form-container {
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  input, button {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    padding: 15px;
+  }
+
+  input, button {
+    padding: 12px;
+    font-size: 12px;
+  }
+}
